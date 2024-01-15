@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Drawing;
 using System.IO;
-using UnityEngine.SocialPlatforms.GameCenter;
-
+using System.Collections;
+using System;
+using Ope
 public class DrawingComparisonManager : MonoBehaviour
 {
 
