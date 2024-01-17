@@ -7,8 +7,7 @@ using UnityEngine.UI;
 using System.Drawing;
 using System.IO;
 using System.Collections;
-using System;
-using Ope
+
 public class DrawingComparisonManager : MonoBehaviour
 {
 
@@ -116,7 +115,6 @@ public class DrawingComparisonManager : MonoBehaviour
         Blob[] targetBlobs = blobCounter.GetObjectsInformation();
         // Compare contours (you may need to implement a more advanced matching algorithm)
         double similarityPercentage = ContourMatching(drawnBlobs, targetBlobs);
-        File.Create(Directory.GetCurrentDirectory() + "/Assets/temp/14.png");
         return (float) similarityPercentage;
     }
 
