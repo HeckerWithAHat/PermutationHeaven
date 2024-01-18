@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
-using Accord.Imaging;
 
 public class DrawingAreaDrawManager : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 {
@@ -112,32 +111,20 @@ public class DrawingAreaDrawManager : MonoBehaviour,IBeginDragHandler,IDragHandl
         using var writer = new BinaryWriter(fs);
         writer.Write(ba);
 
-                // Convert textures to grayscale
-        Texture2D grayscaleDrawn = DrawingComparisonManager.ConvertToGrayscale(DrawingComparisonManager.resizeImage(DrawingComparisonManager.recenterImage(drawnImage, topY, bottomY, leftX, rightX), 900, 900));
-        Texture2D grayscaleTarget = DrawingComparisonManager.ConvertToGrayscale(Vortex);
 
 
-        byte[] ba1 = grayscaleDrawn.EncodeToPNG();
 
-        var fs1 = File.OpenWrite(Directory.GetCurrentDirectory() + "/Assets/temp/temp1.png");
-        using var writer1 = new BinaryWriter(fs1);
-        writer1.Write(ba1);
-        // Calculate SSIM
-        float SSIM = DrawingComparisonManager.CalculateSimilarityPercentage(grayscaleDrawn, grayscaleTarget);
+        ImageComparison.compareEmgu(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png", Directory.GetCurrentDirectory() + "/Assets/Runes/Air/Vortex.png");
 
         
 
 
-        //float GCP = DrawingComparisonManager.GCP(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png", Directory.GetCurrentDirectory() + "/Assets/Runes/Air/Vortex.png"); 
 
 
 
 
 
-        Debug.Log("drawnImage: " + drawnImage.width+"x"+drawnImage.height + ". drawnImageGray: " + grayscaleDrawn.width+"x"+grayscaleDrawn.height + ". Vortex: " + Vortex.height+"x"+Vortex.width + ". VortexGray: " + grayscaleTarget.width+"x"+grayscaleTarget.height);
 
-        Debug.Log("Percent Of Accuracy with SSIM: " + SSIM + "%");
-        //Debug.Log("Percent Of Accuracy with GithubCopilot: " + GCP + "%");
         SpellCastingScreen.SetActive(false); // Toggle the visibility of the spell casting screen
         Cursor.visible = false; // Toggle the visibility of the cursor
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor

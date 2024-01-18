@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ImageComparison : MonoBehaviour
 {
-    public static void compareEmgu(String image1path, String image2path, String resultPath)
+    public static void compareEmgu(String image1path, String image2path /*, String resultPath*/ )
     {
         // Load the images
         Image<Bgr, byte> img1 = new Image<Bgr, byte>(image1path);
@@ -41,11 +41,12 @@ public class ImageComparison : MonoBehaviour
         }
 
         Debug.Log("Ratio of good matches: " + numGoodMatches/matches.Length);
-
+        /*
 // Draw the matches
 Image<Bgr, byte> result = img1.Clone();
         Features2DToolbox.DrawMatches(img1, keypoints1, img2, keypoints2, matches, result, new MCvScalar(), new MCvScalar(), null);
         result.Save(resultPath);
+        */
     }
    
  

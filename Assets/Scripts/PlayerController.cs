@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded; // Flag indicating if the player is grounded
 
-    private bool iscasting; // Flag indicating if the player is casting a spell
+    private bool iscasting = false; // Flag indicating if the player is casting a spell
     public GameObject projectiletofire; // The projectile to fire
 
     [SerializeField]
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (iscasting) return;
             SpellCastingScreen.SetActive(true); // Toggle the visibility of the spell casting screen
             Cursor.visible = true; // Toggle the visibility of the cursor
             Cursor.lockState = CursorLockMode.None; // Unlock the cursor if it is currently locked
