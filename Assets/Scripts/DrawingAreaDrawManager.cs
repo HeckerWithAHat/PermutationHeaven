@@ -108,13 +108,15 @@ public class DrawingAreaDrawManager : MonoBehaviour,IBeginDragHandler,IDragHandl
         byte[] ba = currentTexture.EncodeToPNG();
 
         var fs = File.OpenWrite(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png");
-        using var writer = new BinaryWriter(fs);
-        writer.Write(ba);
+        using (var writer = new BinaryWriter(fs))
+        {
+            writer.Write(ba);
+        }
 
 
 
 
-        ImageComparison.compareEmgu(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png", Directory.GetCurrentDirectory() + "/Assets/Runes/Air/Vortex.png");
+        Debug.Log(ImageComparison.compareEmgu(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png", Directory.GetCurrentDirectory() + "/Assets/Runes/Air/Vortex.png"));
 
         
 
