@@ -44,17 +44,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (iscasting) return;
-            SpellCastingScreen.SetActive(true); // Toggle the visibility of the spell casting screen
-            Cursor.visible = true; // Toggle the visibility of the cursor
-            Cursor.lockState = CursorLockMode.None; // Unlock the cursor if it is currently locked
-            File.Delete(Directory.GetCurrentDirectory() + "/Assets/temp/temp.png"); // Delete a temporary file
-            cameraController.POV = 1; // Set the camera POV to 1
-            cameraController.FreezeCamera = true; // Toggle the freeze camera flag in the camera controller
 
-        }
         if (Input.GetMouseButtonDown(0) && iscasting)
         {
             GameObject projectile = Instantiate(projectiletofire, gameObject.transform.position + (Camera.transform.rotation * Vector3.forward * 2), Camera.transform.rotation);

@@ -12,7 +12,7 @@ public class ImageComparison : MonoBehaviour
 {
     public static double compareEmgu(string image1path, string image2path)
     {
-        // Load the images
+            // Load the images
         Image<Bgr, byte> img1 = new Image<Bgr, byte>(image1path);
         Image<Bgr, byte> img2 = new Image<Bgr, byte>(image2path);
 
